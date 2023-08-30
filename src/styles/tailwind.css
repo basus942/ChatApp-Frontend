@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.formcard{
+    @apply bg-white  rounded-xl flex flex-col justify-center items-center drop-shadow-lg 
+}
+.loginform{
+    @apply w-[16rem] h-[18rem] md:w-[18rem] md:h-[20rem]
+}
+.forminput{
+   @apply input input-bordered input-xs text-sm w-full max-w-sm  p-3 m-1
+}
+
+body{
+    @apply bg-[#F39A9D] flex justify-center items-center flex-col h-[100vh]
+}
+
+
+button{ @apply btn btn-xs}

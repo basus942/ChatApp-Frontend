@@ -12,8 +12,8 @@ import ProtectAuthRoute from "./components/ProtectAuthRoute";
 
 export default function App() {
   return (
-    // <Routes>
-    <Route path="/" element={<Layout />}>
+    <Routes>
+      {/* <Route path="/" element={<Layout />}> */}
       {/* <Route element={<ProtectAuthRoute />}> */}
       <Route path="/auth/register" element={<SignUpForm />} />
       <Route path="/" element={<SignInForm />} />
@@ -22,7 +22,7 @@ export default function App() {
       <Route path="/admin/login" element={<AdminLoginPage />} />
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="*" element={<Missing />} />
-    </Route>
-    // </Routes>
+      {/* </Route> */}
+    </Routes>
   );
 }

@@ -13,7 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     const verify = async () =>
       await axios
-        .get("https://chatapp-backend-1bpc.onrender.com/", {
+        .get("https://chatapp-backend-1bpc.onrender.com/home", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

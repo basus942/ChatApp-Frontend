@@ -7,8 +7,8 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import SignInForm from "./pages/user/SignIn";
 import SignUpForm from "./pages/user/SignUp";
-import Layout from "./components/Layout";
-import ProtectAuthRoute from "./components/ProtectAuthRoute";
+// import Layout from "./components/Layout";
+// import ProtectAuthRoute from "./components/ProtectAuthRoute";
 
 export default function App() {
   return (

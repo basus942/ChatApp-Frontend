@@ -8,7 +8,7 @@ const LogoutButton = () => {
   const navigate = useNavigate();
   const logout = async () => {
     await axios
-      .delete("http://localhost:8080/auth/logout", {
+      .delete("https://chatapp-backend-1bpc.onrender.com/auth/logout", {
         headers: {
           Refreshtoken: refreshToken,
         },

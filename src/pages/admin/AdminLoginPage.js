@@ -57,7 +57,7 @@ const AdminLoginPage = () => {
         ></input>
 
         <input
-          type="text "
+          type="password"
           className="forminput"
           placeholder="Password"
           name="password"

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Missing = () => {
   const navigate = useNavigate();
   const navigateToHome = () => {
-    navigate("/");
+    navigate("/home");
   };
   return (
     <div className="flex flex-col justify-center items-center">

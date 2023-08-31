@@ -80,6 +80,14 @@ function SignUpForm() {
           placeholder="Name"
           className="forminput"
         />
+        <input
+          type="password"
+          name="password"
+          value={state.password}
+          onChange={handleChange}
+          placeholder="Password"
+          className="forminput"
+        />
 
         <input
           type="text"
@@ -99,14 +107,6 @@ function SignUpForm() {
           className="forminput"
         />
 
-        <input
-          type="password"
-          name="password"
-          value={state.password}
-          onChange={handleChange}
-          placeholder="Password"
-          className="forminput"
-        />
         <Link to="/auth" className="text-xs font-medium mt-1">
           Already have an account?
         </Link>

@@ -23,7 +23,7 @@ const HomePage = () => {
         })
         .catch((err) => {
           console.log(err);
-          navigate("/auth");
+          navigate("/");
         });
     verify();
   }, [accessToken, navigate]);

@@ -30,7 +30,7 @@ function SignInForm() {
       .then((res) => {
         cookie.set("accessToken", res.data.accessToken);
         cookie.set("refreshToken", res.data.refreshToken);
-        navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         console.log(error);
@@ -59,7 +59,7 @@ function SignInForm() {
           ></input>
 
           <input
-            type="password "
+            type="password"
             className="forminput"
             placeholder="Password"
             name="password"

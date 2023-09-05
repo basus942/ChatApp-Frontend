@@ -9,6 +9,7 @@ function SignInForm() {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const value = e.target.value;
     setState({
@@ -19,7 +20,7 @@ function SignInForm() {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const { email, password } = state;
 
     const LoginandFetchUserdata = async () => {
@@ -31,6 +32,7 @@ function SignInForm() {
             accessToken,
             userData.dispatch,
             () => {
+              setLoading(false);
               navigate("/home");
             },
             (err) => {
@@ -53,33 +55,37 @@ function SignInForm() {
 
   return (
     <>
-      <form className="formcard loginform" onSubmit={handleOnSubmit}>
-        <h1 className="text-black text-lg md:text-2xl mb-4 ">User Login</h1>
-        <div className="    flex flex-col text-xs md:text-sm ">
-          <input
-            type="text"
-            className="forminput"
-            placeholder="Email"
-            name="email"
-            value={state.email}
-            onChange={handleChange}
-          ></input>
+      {loading ? (
+        <span className="loading loading-infinite loading-lg bg-black" />
+      ) : (
+        <form className="formcard loginform" onSubmit={handleOnSubmit}>
+          <h1 className="text-black text-lg md:text-2xl mb-4 ">User Login</h1>
+          <div className="    flex flex-col text-xs md:text-sm ">
+            <input
+              type="text"
+              className="forminput"
+              placeholder="Email"
+              name="email"
+              value={state.email}
+              onChange={handleChange}
+            ></input>
 
-          <input
-            type="password"
-            className="forminput"
-            placeholder="Password"
-            name="password"
-            value={state.password}
-            onChange={handleChange}
-          ></input>
+            <input
+              type="password"
+              className="forminput"
+              placeholder="Password"
+              name="password"
+              value={state.password}
+              onChange={handleChange}
+            ></input>
 
-          <Link to="/auth/register" className="text-xs font-medium mt-1">
-            Don't have an account?Create now
-          </Link>
-          <button className="m-4 ">Login</button>
-        </div>
-      </form>
+            <Link to="/auth/register" className="text-xs font-medium mt-1">
+              Don't have an account?Create now
+            </Link>
+            <button className="m-4 ">Login</button>
+          </div>
+        </form>
+      )}
     </>
   );
 }

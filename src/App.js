@@ -28,10 +28,10 @@ export default function App() {
   }, []);
   return (
     <Routes>
-      <Route element={<ProtectAuthRoute />}>
-        <Route path="/auth/register" element={<SignUpForm />} />
-        <Route path="/" element={<SignInForm />} />
-      </Route>
+      {/* <Route element={<ProtectAuthRoute />}> */}
+      <Route path="/auth/register" element={<SignUpForm />} />
+      <Route path="/" element={<SignInForm />} />
+      {/* </Route> */}
       <Route path="/home" element={<HomePage />} />
       <Route path="/admin/login" element={<AdminLoginPage />} />
       <Route path="/admin" element={<AdminDashboard />} />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { API } from "../../config/api";
 
 const AdminLoginPage = () => {
   const [state, setState] = useState({
@@ -22,11 +23,7 @@ const AdminLoginPage = () => {
     e.preventDefault();
     const { email, password } = state;
 
-    await axios
-      .post("http://localhost:8080/admin/login", {
-        email: email,
-        password: password,
-      })
+    await API.post("/admin/login", { email: email, password: password })
       .then((res) => {
         cookie.set("adminAccessToken", res.data.adminAccessToken);
         cookie.set("adminRefreshToken", res.data.adminRefreshToken);

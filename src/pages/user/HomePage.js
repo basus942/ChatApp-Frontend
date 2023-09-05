@@ -11,7 +11,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const verify = async () =>
-      API({
+      await API({
         url: "/home",
         method: "get",
         headers: {

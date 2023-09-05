@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API } from "../../config/api";
 import Cookies from "universal-cookie";
 import AllUserTable from "../../components/admin/AllUserTable";
 import AdminLogoutButton from "../../components/admin/AdminLogoutButton";
@@ -11,16 +12,7 @@ const Admin = () => {
 
   useEffect(() => {
     const verify = async () =>
-      await axios
-        .get(
-          "http://localhost:8080/admin",
-
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        )
+      await API.get("/admin", { Authorization: `Bearer ${accessToken}` })
         .then((res) => {
           console.log(res);
         })

@@ -3,8 +3,8 @@ import { API } from "../config/api";
 const cookie = new Cookies();
 
 export const userActions = {
-  userRegister: async (payload, dispatch, onSucess, onError) => {
-    await API.post("/auth/register", { ...payload })
+  userRegister: (payload, dispatch, onSucess, onError) => {
+    API.post("/auth/register", { ...payload })
       .then((RegisterResponse) => {
         // Extract the access token from the login response
         const accessToken = RegisterResponse.data.accessToken;
@@ -21,8 +21,8 @@ export const userActions = {
       });
   },
 
-  userLogin: async (payload, dispatch, onSucess, onError) => {
-    await API.post("/auth/login", { ...payload })
+  userLogin: (payload, dispatch, onSucess, onError) => {
+    API.post("/auth/login", { ...payload })
       .then((loginResponse) => {
         // Extract the access token from the login response
         const accessToken = loginResponse.data.accessToken;
@@ -38,8 +38,8 @@ export const userActions = {
         onError(err);
       });
   },
-  fetchUserDetails: async (accessToken, dispatch, onSucess, onError) => {
-    await API({
+  fetchUserDetails: (accessToken, dispatch, onSucess, onError) => {
+    API({
       url: "/user/profile",
       method: "get",
       headers: {
@@ -58,8 +58,8 @@ export const userActions = {
         onError(err);
       });
   },
-  logoutUser: async (refreshToken, dispatch, onSucess, onError) => {
-    await API({
+  logoutUser: (refreshToken, dispatch, onSucess, onError) => {
+    API({
       url: "/auth/logout",
       method: "delete",
       headers: {

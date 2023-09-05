@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import Cookies from "universal-cookie";
 import { API } from "../../config/api";
+import Cookies from "universal-cookie";
 
 const AdminLoginPage = () => {
   const [state, setState] = useState({

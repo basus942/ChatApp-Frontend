@@ -28,16 +28,14 @@ export default function App() {
   }, []);
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route element={<ProtectAuthRoute />}>
-          <Route path="/auth/register" element={<SignUpForm />} />
-          <Route path="/" element={<SignInForm />} />
-        </Route>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/admin/login" element={<AdminLoginPage />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="*" element={<Missing />} />
+      <Route element={<ProtectAuthRoute />}>
+        <Route path="/auth/register" element={<SignUpForm />} />
+        <Route path="/" element={<SignInForm />} />
       </Route>
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/admin/login" element={<AdminLoginPage />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="*" element={<Missing />} />
     </Routes>
   );
 }

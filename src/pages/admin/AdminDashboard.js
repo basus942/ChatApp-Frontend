@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { API } from "../../config/api";
 import Cookies from "universal-cookie";
 import AllUserTable from "../../components/admin/AllUserTable";
@@ -18,10 +17,12 @@ const Admin = () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      }).catch((err) => {
-        console.log(err);
-        navigate("/admin/login");
-      });
+      })
+        .then((res) => {})
+        .catch((err) => {
+          console.log(err);
+          navigate("/admin/login");
+        });
     verify();
   }, [accessToken, navigate]);
 

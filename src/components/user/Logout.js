@@ -16,7 +16,6 @@ const LogoutButton = () => {
       (res) => {
         cookie.remove("refreshToken");
         cookie.remove("accessToken");
-        console.log("logout success");
         navigate("/");
       },
       (err) => {

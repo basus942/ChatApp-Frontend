@@ -1,7 +1,7 @@
 import React from "react";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { API } from "../../config/api";
 
 const AdminLogoutButton = () => {
   const cookie = new Cookies();
@@ -9,12 +9,13 @@ const AdminLogoutButton = () => {
 
   const navigate = useNavigate();
   const logout = async () => {
-    await axios
-      .delete("http://localhost:8080/admin/logout", {
-        headers: {
-          Refreshtoken: refreshToken,
-        },
-      })
+    await API({
+      url: "/admin/logout",
+      method: "delete",
+      headers: {
+        Refreshtoken: refreshToken,
+      },
+    })
       .then(async (res) => {
         console.log(res);
         cookie.remove("adminRefreshToken");

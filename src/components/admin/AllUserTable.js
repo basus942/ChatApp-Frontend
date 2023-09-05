@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-
-import axios from "axios";
+import { API } from "../../config/api";
 
 const AllUserTable = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/admin/users")
+    API.get("/admin/users")
       .then((res) => setUsers(res.data.users))
       .catch((err) => {
         console.log(err);

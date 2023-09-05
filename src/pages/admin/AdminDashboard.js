@@ -12,14 +12,16 @@ const Admin = () => {
 
   useEffect(() => {
     const verify = async () =>
-      await API.get("/admin", { Authorization: `Bearer ${accessToken}` })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-          navigate("/admin/login");
-        });
+      await API({
+        url: "/admin",
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }).catch((err) => {
+        console.log(err);
+        navigate("/admin/login");
+      });
     verify();
   }, [accessToken, navigate]);
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import { API } from "../../config/api";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -11,12 +11,13 @@ const HomePage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const verify = async () =>
-      await axios
-        .get("http://localhost:8080/home", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
+      API({
+        url: "/home",
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
         .then((res) => {
           console.log(res);
         })

@@ -2,18 +2,17 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
-import LogoutButton from "../../components/user/Logout";
+
+import UserDashboard from "../../components/chatApp/UserDashboard";
 
 const HomePage = () => {
   const cookie = new Cookies();
   const accessToken = cookie.get("accessToken");
-
   const navigate = useNavigate();
-
   useEffect(() => {
     const verify = async () =>
       await axios
-        .get("https://chatapp-backend-1bpc.onrender.com/home", {
+        .get("http://localhost:8080/home", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -30,11 +29,11 @@ const HomePage = () => {
 
   return (
     <>
-      <img
-        alt="welcomeback"
-        src="https://media0.giphy.com/media/iEPGAonPAQ63xIkyIZ/giphy.gif?cid=ecf05e471g074ndnq7m2m91y36pkff4nizmefdmdnsnaohw7&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-      ></img>
-      <LogoutButton />
+      <div className="flex justify-center items-center h-screen">
+        <div className="flex flex-col items-center">
+          <UserDashboard />
+        </div>
+      </div>
     </>
   );
 };

@@ -1,12 +1,14 @@
-import React from "react";
-import axios from "axios";
-import Cookies from "universal-cookie";
+import { useState } from "react";
+
 import { useNavigate, Link } from "react-router-dom";
+import { userActions } from "../../reducers/UserActions";
+import { useUserData } from "../../contexts/UserContext";
 
 function SignUpForm() {
   const navigate = useNavigate();
-  const cookie = new Cookies();
-  const [state, setState] = React.useState({
+  const userData = useUserData();
+
+  const [state, setState] = useState({
     username: "",
     email: "",
     password: "",
@@ -26,25 +28,35 @@ function SignUpForm() {
     evt.preventDefault();
 
     const { username, email, password, image, name } = state;
-    try {
-      await axios
-        .post("https://chatapp-backend-1bpc.onrender.com/auth/register", {
+
+    const RegisterandFetchUserdata = async () => {
+      userActions.userRegister(
+        {
           email: email,
-          username: username,
           password: password,
+          username: username,
           image: image,
           name: name,
-        })
-        .then((res) => {
-          cookie.set("accessToken", res.data.accessToken);
-          cookie.set("refreshToken", res.data.refreshToken);
-          console.log(res);
-        })
-        .then(() => navigate("/"))
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.log(error.response.data.error.message);
-    }
+        },
+        userData.dispatch,
+        (accessToken) => {
+          userActions.fetchUserDetails(
+            accessToken,
+            userData.dispatch,
+            () => {
+              navigate("/home");
+            },
+            (err) => {
+              console.log("Error: ", err);
+            }
+          );
+        },
+        (err) => {
+          console.log("Error: ", err);
+        }
+      );
+    };
+    RegisterandFetchUserdata();
 
     setState({
       username: "",
@@ -56,7 +68,7 @@ function SignUpForm() {
   };
 
   return (
-    <form onSubmit={handleOnSubmit} className="formcard registerform">
+    <form onSubmit={handleOnSubmit} className="formcard registerform  ">
       <h1 className="text-black p-4">Register Now</h1>
 
       <input

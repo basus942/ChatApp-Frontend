@@ -10,7 +10,7 @@ const AdminLogoutButton = () => {
   const navigate = useNavigate();
   const logout = async () => {
     await axios
-      .delete("https://chatapp-backend-1bpc.onrender.com/admin/logout", {
+      .delete("http://localhost:8080/admin/logout", {
         headers: {
           Refreshtoken: refreshToken,
         },

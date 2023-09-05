@@ -23,7 +23,7 @@ const AdminLoginPage = () => {
     const { email, password } = state;
 
     await axios
-      .post("https://chatapp-backend-1bpc.onrender.com/admin/login", {
+      .post("http://localhost:8080/admin/login", {
         email: email,
         password: password,
       })

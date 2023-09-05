@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Cookies from "universal-cookie";
-import axios from "axios";
+import { useUserData } from "../../contexts/UserContext";
+import { userActions } from "../../reducers/UserActions";
 import { useNavigate, Link } from "react-router-dom";
 function SignInForm() {
+  const userData = useUserData();
   const navigate = useNavigate();
   const [state, setState] = useState({
     email: "",
@@ -15,33 +16,39 @@ function SignInForm() {
       [e.target.name]: value,
     });
   };
-  const cookie = new Cookies();
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     const { email, password } = state;
 
-    await axios
-      .post("https://chatapp-backend-1bpc.onrender.com/auth/login", {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        cookie.set("accessToken", res.data.accessToken);
-        cookie.set("refreshToken", res.data.refreshToken);
-        navigate("/home");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+    const LoginandFetchUserdata = async () => {
+      userActions.userLogin(
+        { email: email, password: password },
+        userData.dispatch,
+        (accessToken) => {
+          userActions.fetchUserDetails(
+            accessToken,
+            userData.dispatch,
+            () => {
+              navigate("/home");
+            },
+            (err) => {
+              console.log("Error: ", err);
+            }
+          );
+        },
+        (err) => {
+          console.log("Error: ", err);
+        }
+      );
+    };
+    LoginandFetchUserdata();
+    const newState = {};
     for (const key in state) {
-      setState({
-        ...state,
-        [key]: "",
-      });
+      newState[key] = "";
     }
+    setState(newState);
   };
 
   return (

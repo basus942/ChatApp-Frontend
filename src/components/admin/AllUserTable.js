@@ -6,7 +6,7 @@ const AllUserTable = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     axios
-      .get("https://chatapp-backend-1bpc.onrender.com/admin/users")
+      .get("http://localhost:8080/admin/users")
       .then((res) => setUsers(res.data.users))
       .catch((err) => {
         console.log(err);

@@ -13,7 +13,7 @@ const Admin = () => {
     const verify = async () =>
       await axios
         .get(
-          "https://chatapp-backend-1bpc.onrender.com/admin",
+          "http://localhost:8080/admin",
 
           {
             headers: {

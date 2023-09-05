@@ -4,10 +4,9 @@ import React from "react";
 
 const ProtectAuthRoute = () => {
   const userData = useUserData();
-
   const location = useLocation();
-  console.log("App Rendered. userData:", userData);
-  return userData ? (
+  const isLoggedin = userData.state.isLoggedin;
+  return !isLoggedin ? (
     <Outlet />
   ) : (
     <Navigate to="/home" state={{ from: location }} replace />

@@ -4,7 +4,7 @@ import LogoutButton from "../user/Logout";
 const Navbar = () => {
   return (
     <>
-      <div className="flex justify-between bg-stone-500 px-10  ">
+      <div className="flex justify-between bg-[#22AAA1] px-10 py-1 ">
         <div className="avatar">
           <div className="w-10 m-1 rounded-full">
             <img

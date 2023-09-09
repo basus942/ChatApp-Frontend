@@ -1,16 +1,13 @@
 import React from "react";
 import LogoutButton from "../user/Logout";
 
-const Navbar = () => {
+const Navbar = ({ image }) => {
   return (
     <>
       <div className="flex justify-between bg-[#22AAA1] px-10 py-1 ">
         <div className="avatar">
           <div className="w-10 m-1 rounded-full">
-            <img
-              src="https://i.pinimg.com/564x/c9/8a/07/c98a0779b955a3ca6ba68d5c5166619e.jpg"
-              alt="profilpic"
-            />
+            <img src={image} alt="profilpic" />
           </div>
         </div>
 
@@ -32,7 +29,25 @@ const Navbar = () => {
               </svg>
             </button>
             <div className="flex items-center menu menu-sm dropdown-content mt-1 z-[1] p-2 shadow bg-base-100 rounded-box w-[8rem]">
-              <LogoutButton />
+              <button
+                className="bg-transparent"
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+              >
+                Logout
+              </button>
+              <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                  <form method="dialog">
+                    <h1 className="mb-2">Are you sure you want to logout?</h1>
+                    <div className="flex justify-start items-center ">
+                      <LogoutButton />
+                      <button className="button">Cancel</button>
+                    </div>
+                  </form>
+                </div>
+              </dialog>
             </div>
           </div>
         </div>

@@ -4,11 +4,13 @@ import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 
 import UserDashboard from "../../components/chatApp/UserDashboard";
+import { useUserData } from "../../contexts/UserContext";
 
 const HomePage = () => {
   const cookie = new Cookies();
   const accessToken = cookie.get("accessToken");
   const navigate = useNavigate();
+  const userData = useUserData();
   useEffect(() => {
     const verify = async () =>
       await API({
@@ -32,7 +34,7 @@ const HomePage = () => {
     <>
       <div className="flex justify-center items-center h-screen">
         <div className="flex flex-col items-center">
-          <UserDashboard />
+          {userData.state.userData != null && <UserDashboard />}
         </div>
       </div>
     </>

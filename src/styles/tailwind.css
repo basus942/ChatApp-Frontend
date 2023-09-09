@@ -20,3 +20,10 @@ body{
 
 
 button{ @apply btn btn-xs}
+
+.sendMessage{
+   @apply bg-[#84CAE7] justify-end
+}
+.receiveMessage{
+    @apply bg-[#22AAA1] justify-start
+}

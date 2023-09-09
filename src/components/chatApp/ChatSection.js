@@ -2,14 +2,15 @@ import ChatSectionFooter from "./ChatSectionFooter";
 import ChatSectionNav from "./ChatSectionNav";
 import Message from "./Message";
 
-const ChatSection = () => {
+const ChatSection = ({ messages, currentUserId }) => {
+  console.log("Current User ID:", currentUserId);
   return (
     <div className="flex flex-col h-full ">
       <ChatSectionNav />
       <div className="overflow-auto flex-grow ">
-        <Message send={false} />
-        <Message send={true} />
-        <Message send={false} />
+        {messages.map((m) => {
+          return <Message message={m} own={m.senderId === currentUserId} />;
+        })}
       </div>
       <ChatSectionFooter />
     </div>

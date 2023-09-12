@@ -80,7 +80,7 @@ function SignInForm() {
             ></input>
 
             <Link to="/auth/register" className="text-xs font-medium mt-1">
-              Don't have an account?Create now
+              Don't have an account?Create now!
             </Link>
             <button className="m-4 button ">Login</button>
           </div>

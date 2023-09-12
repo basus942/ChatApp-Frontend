@@ -60,7 +60,7 @@ const AdminLoginPage = () => {
           value={state.password}
           onChange={handleChange}
         ></input>
-        <button className="m-4 ">Login</button>
+        <button className="m-4 button">Login</button>
       </div>
     </form>
   );

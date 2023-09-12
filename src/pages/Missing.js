@@ -12,7 +12,7 @@ const Missing = () => {
       <h1 className="text-2xl text-black font-extrabold p-2">
         Oops,Page not found
       </h1>
-      <button className="p-3 m-3" onClick={navigateToHome}>
+      <button className="p-3 m-3 button" onClick={navigateToHome}>
         Home
       </button>
     </div>

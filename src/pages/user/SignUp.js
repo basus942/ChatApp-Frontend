@@ -121,10 +121,10 @@ function SignUpForm() {
             className="forminput"
           />
 
-          <Link to="/auth" className="text-xs font-medium mt-1">
+          <Link to="/" className="text-xs font-medium mt-1">
             Already have an account?
           </Link>
-          <button className="m-4">Register</button>
+          <button className="m-4 button">Register</button>
         </form>
       )}
     </>

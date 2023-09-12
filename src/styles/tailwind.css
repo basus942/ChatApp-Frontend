@@ -19,7 +19,7 @@ body{
 }
 
 
-button{ @apply btn btn-xs}
+.button{ @apply btn btn-xs}
 
 .sendMessage{
    @apply bg-[#84CAE7] justify-end

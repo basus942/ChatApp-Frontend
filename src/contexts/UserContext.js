@@ -16,7 +16,7 @@ const UserDataProvider = ({ children }) => {
     isLoggedin: false,
   };
   const [state, dispatch] = useReducer(UserReducer, intialState);
-  console.log(state);
+  // console.log(state);
   return (
     <UserDataContext.Provider value={{ state, dispatch }}>
       {children}

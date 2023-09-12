@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { API } from "../../config/api";
+
 const ConversationList = ({ conversation, currentUserId }) => {
   const [friend, setFriend] = useState([]);
+
   useEffect(() => {
     const friendId = conversation.members.find((id) => id !== currentUserId);
     const getFriendInfo = async () => {

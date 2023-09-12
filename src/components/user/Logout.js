@@ -24,7 +24,7 @@ const LogoutButton = () => {
     );
   };
   return (
-    <button className="bg-transparent" onClick={logout}>
+    <button className="bg-transparent button" onClick={logout}>
       Logout
     </button>
   );

@@ -1,13 +1,16 @@
 import React from "react";
 import LogoutButton from "../user/Logout";
 
-const Navbar = ({ image }) => {
+const Navbar = ({ image, name }) => {
   return (
     <>
       <div className="flex justify-between bg-[#22AAA1] px-10 py-1 ">
-        <div className="avatar">
+        <div className="avatar group relative">
           <div className="w-10 m-1 rounded-full">
             <img src={image} alt="profilpic" />
+            <div className="hidden group-hover:block absolute top-5 left-10 bg-gray-700 text-white p-2 rounded-md">
+              {name}
+            </div>
           </div>
         </div>
 
@@ -28,7 +31,7 @@ const Navbar = ({ image }) => {
                 ></path>
               </svg>
             </button>
-            <div className="flex items-center menu menu-sm dropdown-content mt-1 z-[1] p-2 shadow bg-base-100 rounded-box w-[8rem]">
+            <div className="flex items-center menu menu-sm dropdown-content mt-1 z-[1] p-2 shadow bg-gray-700 rounded-box w-[8rem]">
               <button
                 className="bg-transparent"
                 onClick={() =>

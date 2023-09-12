@@ -8,7 +8,7 @@ import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import SignInForm from "./pages/user/SignIn";
 import SignUpForm from "./pages/user/SignUp";
 import Cookies from "universal-cookie";
-import Layout from "./components/Layout";
+// import Layout from "./components/Layout";
 import ProtectAuthRoute from "./components/ProtectAuthRoute";
 import { useUserData } from "./contexts/UserContext";
 import { userActions } from "./reducers/UserActions";

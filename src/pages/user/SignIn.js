@@ -82,7 +82,7 @@ function SignInForm() {
             <Link to="/auth/register" className="text-xs font-medium mt-1">
               Don't have an account?Create now
             </Link>
-            <button className="m-4 ">Login</button>
+            <button className="m-4 button ">Login</button>
           </div>
         </form>
       )}

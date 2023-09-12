@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import UserDashboard from "../../components/chatApp/UserDashboard";
 import { useUserData } from "../../contexts/UserContext";
+import { ChatAppContextProvider } from "../../contexts/ChatAppContext";
 
 const HomePage = () => {
   const cookie = new Cookies();
@@ -21,7 +22,7 @@ const HomePage = () => {
         },
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
           console.log(err);
@@ -32,11 +33,13 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen">
-        <div className="flex flex-col items-center">
-          {userData.state.userData != null && <UserDashboard />}
+      <ChatAppContextProvider>
+        <div className="flex justify-center items-center h-screen">
+          <div className="flex flex-col items-center">
+            {userData.state.userData != null && <UserDashboard />}
+          </div>
         </div>
-      </div>
+      </ChatAppContextProvider>
     </>
   );
 };

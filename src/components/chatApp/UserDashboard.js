@@ -20,7 +20,7 @@ const UserDashboard = () => {
   const userId = userData.state.userData["_id"];
 
   useEffect(() => {
-    setSocket(io("ws://chatsocket-io.onrender.com"), {
+    setSocket(io("ws://localhost:8090"), {
       reconnection: true,
       reconnectionAttempts: Infinity, // Infinite reconnection attempts
     });

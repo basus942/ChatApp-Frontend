@@ -8,10 +8,12 @@ import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import SignInForm from "./pages/user/SignIn";
 import SignUpForm from "./pages/user/SignUp";
 import Cookies from "universal-cookie";
-// import Layout from "./components/Layout";
+import Layout from "./components/Layout";
 import ProtectAuthRoute from "./components/ProtectAuthRoute";
 import { useUserData } from "./contexts/UserContext";
 import { userActions } from "./reducers/UserActions";
+import Store from "./pages/user/Store";
+
 export default function App() {
   const cookie = new Cookies();
   const accessToken = cookie.get("accessToken");
@@ -28,14 +30,17 @@ export default function App() {
   }, []);
   return (
     <Routes>
-      <Route element={<ProtectAuthRoute />}>
-        <Route path="/auth/register" element={<SignUpForm />} />
-        <Route path="/" element={<SignInForm />} />
+      <Route element={<Layout />}>
+        <Route element={<ProtectAuthRoute />}>
+          <Route path="/auth/register" element={<SignUpForm />} />
+          <Route path="/" element={<SignInForm />} />
+        </Route>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="Store" element={<Store />} />{" "}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />{" "}
+        <Route path="*" element={<Missing />} />
       </Route>
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/admin/login" element={<AdminLoginPage />} />
-      <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="*" element={<Missing />} />
     </Routes>
   );
 }

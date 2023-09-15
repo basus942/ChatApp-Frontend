@@ -34,7 +34,7 @@ const HomePage = () => {
   return (
     <>
       <ChatAppContextProvider>
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center">
           <div className="flex flex-col items-center">
             {userData.state.userData != null && <UserDashboard />}
           </div>

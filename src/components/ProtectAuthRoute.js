@@ -12,7 +12,7 @@ const ProtectAuthRoute = () => {
   return !isLoggedin || userDataResponse == null ? (
     <Logout />
   ) : (
-    <Navigate to="/home" state={{ from: location }} replace />
+    <Navigate to="/home" state={{ from: location }} />
   );
 };
 

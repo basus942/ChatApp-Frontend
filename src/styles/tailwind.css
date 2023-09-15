@@ -15,11 +15,11 @@
    @apply input input-bordered input-xs text-sm w-full max-w-sm  p-3 m-1 
 }
 body{
-    @apply bg-[#F39A9D] flex justify-center items-center flex-col h-[100vh]
+    @apply bg-[#84CAE7] flex justify-center items-center flex-col h-[100vh]
 }
 
 
-.button{ @apply btn btn-xs}
+.button{ @apply btn btn-xs text-white shadow-sm shadow-[#ffffff]}
 
 .sendMessage{
    @apply bg-[#84CAE7] justify-end

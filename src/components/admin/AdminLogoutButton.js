@@ -27,7 +27,11 @@ const AdminLogoutButton = () => {
       });
   };
 
-  return <button onClick={logout}>Logout</button>;
+  return (
+    <button className="button" onClick={logout}>
+      Logout
+    </button>
+  );
 };
 
 export default AdminLogoutButton;

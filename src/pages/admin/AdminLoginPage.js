@@ -4,6 +4,7 @@ import { API } from "../../config/api";
 import Cookies from "universal-cookie";
 
 const AdminLoginPage = () => {
+  const [error, setError] = useState(false);
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -29,7 +30,9 @@ const AdminLoginPage = () => {
 
         navigate("/admin");
       })
-      .catch((error) => {
+      .catch((err) => {
+        setError(err.response.data.error.message);
+        console.log("Error: ", err.response.data.error.message);
         console.log(error);
       });
 
@@ -42,6 +45,9 @@ const AdminLoginPage = () => {
   return (
     <form className="formcard loginform" onSubmit={handleSubmit}>
       <h1 className="text-black text-lg md:text-2xl mb-4 ">Admin Login</h1>
+      <h4 className="text-sm text-red-700 font-semibold pb-1">
+        {error ? error : null}
+      </h4>
       <div className="    flex flex-col text-xs md:text-sm ">
         <input
           type="text"

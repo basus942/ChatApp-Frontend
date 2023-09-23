@@ -10,6 +10,7 @@ function SignInForm() {
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const handleChange = (e) => {
     const value = e.target.value;
     setState({
@@ -41,7 +42,9 @@ function SignInForm() {
           );
         },
         (err) => {
-          console.log("Error: ", err);
+          setLoading(false);
+          setError(err.response.data.error.message);
+          console.log("Error: ", err.response.data.error.message);
         }
       );
     };
@@ -60,6 +63,9 @@ function SignInForm() {
       ) : (
         <form className="formcard loginform" onSubmit={handleOnSubmit}>
           <h1 className="text-black text-lg md:text-2xl mb-4 ">User Login</h1>
+          <h4 className="text-sm text-red-700 font-semibold pb-1">
+            {error ? error : null}
+          </h4>
           <div className="    flex flex-col text-xs md:text-sm ">
             <input
               type="text"
